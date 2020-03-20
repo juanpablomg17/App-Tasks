@@ -1,21 +1,26 @@
 [
-    {
-        "id": 0,
-        "title": "task one",
-        "Description": "loren ipsum",
-        "Done": false
-    },
-    {
-        "id": 1,
-        "title": "task two",
-        "Description": "loren ipsum",
-        "Done": false
-    },
-    {
-        "id": 2,
-        "title": "task three",
-        "Description": "loren ipsum",
-        "Done": false
-    }
     
-]
+      {
+
+        "id": "001",
+        "title": "task1",
+        "responsible": "mark",
+        "description": "lorem impsum",
+        "priority": "low"
+      },
+      {
+        "id": "002",
+        "title": "task2",
+        "responsible": "ryan",
+        "description": "lorem impsum",
+        "priority": "medium"
+      },
+      {
+        "id": "003",
+        "title": "task3",
+        "responsible": "joseph",
+        "description": "lorem impsum",
+        "priority": "high"
+      }
+    
+    ]

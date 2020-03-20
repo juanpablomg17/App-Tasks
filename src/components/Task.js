@@ -37,16 +37,37 @@ class Task extends Component{
     render(){
 
         const {task} = this.props;
-        return <div style={this.StyleCompletd()}>
-            {task.title}-
-            {task.Description} - 
-            {task.Done} 
-            {task.id}
+        console.log("esta es una fucking prubeas",task);
 
-        <input type="checkbox" onChange={this.props.checkDone.bind(this,task.id)} style={this.TareaHecha()}/>
-        <button onClick={this.props.deleteTask.bind(this,task.id)}  style={this.Btnx()}>
-            x
-        </button>
+        const tarieta = this.props.tasks.map((task, i) => {
+            return (
+              <div className="col-md-4" key={i}>
+                <div className="card mt-4">
+                  <div className="card-title text-center">
+                    <h3>{task.title}</h3>
+                    <span className="badge badge-pill badge-danger ml-2">
+                      {task.priority}
+                    </span>
+                  </div>
+                  <div className="card-body">
+                    {task.description}
+                  </div>
+                  <div className="card-footer">
+                    <button
+                      className="btn btn-danger"
+                      >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )
+          });
+        
+        return <div>
+            {tarieta}
+
+        
 
         </div> 
 
