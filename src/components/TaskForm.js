@@ -21,20 +21,23 @@ export default class TaskForm extends Component{
 
     handleInputChange = (e) => {
         const {value, name} = e.target;
-        console.log(value, name);
+        
         this.setState({
           [name]: value
         });
       }
 
+
+      // enviar el formulario
     onSubmit = e =>{
-        console.log(this.state)
+        
         this.props.addTask(this.state.title, this.state.responsible, this.state.description, this.state.priority);
         e.preventDefault();
     }
 
+    // guardar los cambios de los inputs
     onChange = e =>{
-        console.log(e.target.name, e.target.value);
+        
         this.setState({
             [e.target.name]: e.target.value
         })

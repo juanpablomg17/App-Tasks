@@ -28,8 +28,10 @@ class Tasks extends Component{
                     {task.priority}
                   </span>
                 </div>
-                <div className="card-body">
-                  {task.description}
+                <div className="card-body text-center">
+                  <div>{task.description}</div> 
+                  <div>{task.responsible}</div>
+                  
                 </div>
                 <div className="card-footer">
                   <button id="boton" onClick={this.props.deleteTask.bind(this,task.id)}

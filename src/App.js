@@ -10,10 +10,11 @@ import tasks from './sample/tasks.json';
 import TaskForm from './components/TaskForm';
 import Tasks from './components/Tasks';
 import Header from './components/Header';
+import ConsultTask from './components/FormConsultTask';
 
 
 
-console.log(tasks)
+
 
 export default class App extends Component{
 
@@ -39,7 +40,7 @@ export default class App extends Component{
    DeleteTask = (id) => {
     // él método filter nos permite devolver un arreglo ignorando algunos datos
    const tareas=  this.state.tasks.filter(task => task.id !== id)
-    console.log(tareas);
+   
     this.setState({tasks: tareas})
    }
 
@@ -58,6 +59,18 @@ export default class App extends Component{
    //<TaskForm addTask={this.addTask}/>
    // deleteTask={this.DeleteTask} checkDone={this.checkDone}
   // }
+
+
+  ConsultTask = (title) => {
+    const tareas=  this.state.tasks.filter(task => task.title === title)
+    console.log(tareas);
+      
+    
+    
+
+  }
+
+
 
 
   render(){
@@ -80,6 +93,13 @@ export default class App extends Component{
         
 
         </div>
+
+        <div className="row">
+          <ConsultTask consultTask={this.ConsultTask} tasks ={this.state.tasks}/>
+
+        </div>
+
+
 
 
 
