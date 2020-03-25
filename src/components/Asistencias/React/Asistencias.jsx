@@ -11,10 +11,10 @@ export default class Asistencias extends Component {
 
         return(
            <React.Fragment>
-               <div className="row">
-               <div className="col-md-6 p-5 ">
-                    
-                    {asistencia.map(asis => (
+                 <div >
+                 
+                     <div className="row">
+                     {asistencia.map(asis => (
                           
                           
                           <UnaAsistencia
@@ -24,11 +24,13 @@ export default class Asistencias extends Component {
                     ))
 
                     }
+                                                 
+                     
                     
                   
                </div>
-
-               </div>
+                 </div>
+               
               
 
            </React.Fragment>

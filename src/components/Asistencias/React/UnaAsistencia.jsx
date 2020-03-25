@@ -5,7 +5,8 @@ const Asistencia = (props) => {
 
     const {id,title, responsible,description,priority} = props.asistencia;
     return(
-        <div className="col-md-6">
+        
+           <div className="col-md-6">
            <div className="card" id="tajeta">
             
             <div className="card mt-4">
@@ -32,6 +33,9 @@ const Asistencia = (props) => {
       </div>
 
         </div>
+
+        
+       
        
     )
 }

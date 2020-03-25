@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Asistencia from './Asistencia'
+
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 

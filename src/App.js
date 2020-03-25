@@ -8,8 +8,8 @@ import asistencia from './sample/asistencia.json';
 
 //componentes
 import Buscador from './components/Asistencias/React/Buscador'
-import Asistencia from './components/Asistencias/React/Asistencia';
 import Asistencias from './components/Asistencias/React/Asistencias';
+import FormAsistencia from './components/Asistencias/React/FormAsistencia';
 
 
 
@@ -118,11 +118,11 @@ export default class App extends Component {
     return (
 
 
-     
+
 
       <Router>
 
-        <Route  path="/" render={() => {
+        <Route path="/" render={() => {
           return <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
@@ -139,7 +139,7 @@ export default class App extends Component {
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <Link class="dropdown-item" to="/ConsultarAsistencia">Consultar Asistencia</Link>
                     <Link class="dropdown-item" to="/VerAgregarAsistencias">Ver y agregar Asistencias</Link>
-                    
+
                   </div>
                 </li>
                 <li class="nav-item">
@@ -147,46 +147,56 @@ export default class App extends Component {
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
             </div>
-                </nav>
+          </nav>
 
-          
+
         }}>
 
 
-        </Route>   
-          <Route exact path="/VerAgregarAsistencias"> 
-              <div>
-              <Asistencias
+        </Route>
 
+        {/* Esto es lo de (ver y agregar Asistencia) */}
+      
+        <Route exact path="/VerAgregarAsistencias" >
+          <div id="VerAgregarAsistencia">
+            <div className="row">
+              <div className="col-md-4">
+              <FormAsistencia/>
+              </div>
+              <div className="col-md-8 " id="conjunto-asistencias">
+              <Asistencias
                 asistencias={this.state.asistencia}
               />
+
+              </div>
+             
             </div>
+          </div>
 
-          </Route>
 
-          <Route exact path='/ConsultarAsistencia'>
+        </Route>
+
+        <Route exact path='/ConsultarAsistencia'>
 
           <div className="app container">
             <div className="jumbotron">
               <p className="lead text-center">Busca tu asistencia</p>
               <Buscador termino={this.datosBusqueda} />
             </div>
-            <Asistencia
+            <Asistencias
               asistencias={this.state.resultados}
 
             />
           </div>
 
-          </Route>
-            
+        </Route>
 
+        </Router>
 
-      </Router>
-      
 
 
 
