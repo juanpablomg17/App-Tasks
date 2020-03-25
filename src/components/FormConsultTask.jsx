@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import Tasks from './Tasks';
+
+
+import Prueba from './prueba';
+
 
 export default class ConsultTask extends Component {
     
@@ -17,14 +22,15 @@ export default class ConsultTask extends Component {
 
     onSubmit = e =>{
         
-         const tareas = this.props.consultTask(this.state.title);
+         const con = this.props.consultTask(this.state.title);
 
-       
-        
+         console.log(con);
        
            
        e.preventDefault();
     }
+
+   
 
     onChange = e =>{
         console.log(e.target.name, e.target.value);
@@ -32,6 +38,16 @@ export default class ConsultTask extends Component {
             [e.target.name]: e.target.value
         })
     }
+
+    onSubmit2 = e =>{
+        
+        const con = this.props.volver(e);
+        console.log(con);
+      
+          
+      e.preventDefault();
+   }
+
 
 
    
@@ -54,11 +70,24 @@ export default class ConsultTask extends Component {
                         <div className="card-footer">
                             <div className="form-group">
                                 <input type="submit"/>
+                        
+                                
                                 
                             </div>
                         </div>
 
                     </form>
+
+                    <form className="card" onSubmit={this.onSubmit2}>
+                            <div className="form-group">
+                                <button type="submit" onClick={this.onSubmit2}>
+                                    volver
+                                </button>
+
+                            </div>
+
+                        </form>
+                    
 
                 </div>
                 
