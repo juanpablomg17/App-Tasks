@@ -11,7 +11,7 @@ export default class Asistencias extends Component {
 
         return(
            <React.Fragment>
-                 <div >
+                 <div>
                  
                      <div className="row">
                      {asistencia.map(asis => (
@@ -19,7 +19,8 @@ export default class Asistencias extends Component {
                           
                           <UnaAsistencia
                             key ={asis.id}
-                            asistencia={asis}     
+                            asistencia={asis}
+                            DeleteAsistencia={this.props.DeleteAsistencia}     
                           />
                     ))
 
