@@ -15,6 +15,13 @@ export default class Header extends Component {
 
         // tomamos el valor del input
         const busqueda = this.busquedaref.current.value;
+        const resultado = this.props.resultado;
+
+        if (busqueda === resultado){
+            console.log("son iguales");
+        }else{
+            console.log("no existe");
+        }
         
         // lo enviamos al componente principal
         this.props.termino(busqueda);
