@@ -1,19 +1,39 @@
 import React, { Component } from 'react'
 
 export default class FormAsistencia extends Component {
-   
-    busquedaref = React.createRef();
-   
-    ObtenerDatos = e => {
 
 
-          // tomamos el valor del input
-          const busqueda = this.busquedaref.current.value;
+    state={
+        title:'',
+        responsible:'',
+        descripcion:'',
+        priority:''
         
-          // lo enviamos al componente principal
-          this.props.termino(busqueda);
     }
    
+    handleInputChange = (e) => {
+        const {value, name} = e.target;
+        
+        this.setState({
+          [name]: value
+        });
+      }
+
+
+      // enviar el formulario
+    onSubmit = e =>{
+        e.preventDefault();
+        this.props.addAsistencia(this.state.title, this.state.responsible, this.state.description, this.state.priority);
+        
+    }
+
+    // guardar los cambios de los inputs
+    onChange = e =>{
+        
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
    
    
     render() {
@@ -31,8 +51,8 @@ export default class FormAsistencia extends Component {
                                 type="text"
                                 name="title"
                                 className="form-control"
-                                
-                                value=""
+                                onChange={this.handleInputChange}
+                                value={this.state.title}
                                 placeholder="Title"
                             />
                         </div>
@@ -41,13 +61,18 @@ export default class FormAsistencia extends Component {
                                 type="text"
                                 name="responsible"
                                 className="form-control"
+                                value={this.state.responsible}
+                                onChange={this.handleInputChange}
                                
                                 placeholder="Responsible"
                             />
                         </div>
                         <div className="form-group">
-                           <textarea name="descripcion" id="descripcion" cols="30" rows="10" 
-                           placeholder="Description">
+                           <textarea name="descripcion" 
+                           id="descripcion" cols="40" rows="10" 
+                           placeholder="Description"
+                           onChange={this.handleInputChange}
+                           value={this.state.descripcion}>
 
                            </textarea>
                         </div>
@@ -55,6 +80,8 @@ export default class FormAsistencia extends Component {
                             <select
                                 name="priority"
                                 className="form-control"
+                                value={this.state.priority}
+                                onChange={this.handleInputChange}
                               
                             >
                                 <option>Positiva</option>
@@ -64,7 +91,7 @@ export default class FormAsistencia extends Component {
                         </div>
                         <button id="boton" type="submit" className="btn btn-primary" >
                             Save
-          </button>
+                        </button>
                     </form>
                 </div>
 
