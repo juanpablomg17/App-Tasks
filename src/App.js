@@ -28,7 +28,7 @@ export default class App extends Component {
   
   
   
-    addTask = (title, responsible, description, priority) => {
+    addAsistencia = (title, responsible, description, priority) => {
       const newTask = {
         title: title,
         responsible: responsible,
@@ -102,10 +102,30 @@ export default class App extends Component {
     const asis = this.state.asistencia.filter(asis => asis.title === title);
     this.setState({ resultados: asis });
 
+  }
 
+  // AGREGAR UNA NUEVA ASISTENCIA 
 
+  addAsistencia = (title, responsible, description, priority) => {
+    const newAsis = {
+      title: title,
+      responsible: responsible,
+      description: description,
+      priority: priority,
+      id: this.state.asistencia.length
+    }
+    this.setState({
+      asistencia: [...this.state.asistencia, newAsis]
+    })
+  }
 
+  // ELIMINAR UNA ASISTENCIA
 
+  DeleteAsistencia = (id) => {
+    // él método filter nos permite devolver un arreglo ignorando algunos datos
+    const asis = this.state.asistencia.filter(asis => asis.id !== id)
+
+    this.setState({ asistencia: asis })
   }
 
 
@@ -160,42 +180,47 @@ export default class App extends Component {
         </Route>
 
         {/* Esto es lo de (ver y agregar Asistencia) */}
-      
+
         <Route exact path="/VerAgregarAsistencias" >
           <div id="VerAgregarAsistencia">
             <div className="row">
               <div className="col-md-4">
-              <FormAsistencia/>
+                <FormAsistencia addAsistencia={this.addAsistencia} />
               </div>
               <div className="col-md-8 " id="conjunto-asistencias">
-              <Asistencias
-                asistencias={this.state.asistencia}
-              />
+                <Asistencias
+                  asistencias={this.state.asistencia}
+                  DeleteAsistencia={this.DeleteAsistencia}
+
+                />
 
               </div>
-             
+
             </div>
           </div>
 
 
         </Route>
 
+         {/*ESTO ES LO DE CONSULTAR ASISTENCIA */}
         <Route exact path='/ConsultarAsistencia'>
 
           <div className="app container">
             <div className="jumbotron">
               <p className="lead text-center">Busca tu asistencia</p>
-              <Buscador termino={this.datosBusqueda} />
+              <Buscador termino={this.datosBusqueda}
+              resultado={this.state.resultados} />
             </div>
             <Asistencias
               asistencias={this.state.resultados}
+              DeleteAsistencia={this.DeleteAsistencia}
 
             />
           </div>
 
         </Route>
 
-        </Router>
+      </Router>
 
 
 
